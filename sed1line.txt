@@ -17,19 +17,21 @@ This file will also available in other languages:
   Spanish     - (pending)
 
 
-FILE SPACING:
+SPASI BERKAS:
 
- # double space a file
+ # spasi dobel untuk sebuah berkas
  sed G
 
- # double space a file which already has blank lines in it. Output file
- # should contain no more than one blank line between lines of text.
+ # spasi dobel sebuah berkas yang sudah memiliki baris-baris kosong di
+ # dalamnya. Berkas keluaran nanti berisi tidak lebih dari satu baris 
+ # kosong di antara baris-baris teks
  sed '/^$/d;G'
 
- # triple space a file
+
+ # spasi tripel untuk sebuah berkas
  sed 'G;G'
 
- # undo double-spacing (assumes even-numbered lines are always blank)
+ # undo spasi-dobel (anggap baris-baris bernomor genap selalu kosong)
  sed 'n;d'
 
  # insert a blank line above every line which matches "regex"
