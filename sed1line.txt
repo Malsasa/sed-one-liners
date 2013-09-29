@@ -109,7 +109,7 @@ KONVERSI TEKS DAN SUBSTITUSI:
  sed  -e :a -e 's/^.\{1,77\}$/ & /;ta'                     # method 1
  sed  -e :a -e 's/^.\{1,77\}$/ &/;ta' -e 's/\( *\)\1/\1/'  # method 2
 
- # substitute (find and replace) "foo" with "bar" on each line
+ # substitusi (find and replace) "foo" dengan "bar" pada setiap baris
  sed 's/foo/bar/'             # replaces only 1st instance in a line
  sed 's/foo/bar/4'            # replaces only 4th instance in a line
  sed 's/foo/bar/g'            # replaces ALL instances in a line
@@ -119,7 +119,7 @@ KONVERSI TEKS DAN SUBSTITUSI:
  # substitute "foo" with "bar" ONLY for lines which contain "baz"
  sed '/baz/s/foo/bar/g'
 
- # substitute "foo" with "bar" EXCEPT for lines which contain "baz"
+ # substitusi "foo" dengan "bar" KECUALI untuk baris yang berisi "baz"
  sed '/baz/!s/foo/bar/g'
 
  # change "scarlet" or "ruby" or "puce" to "red"
@@ -132,6 +132,7 @@ KONVERSI TEKS DAN SUBSTITUSI:
  sed -n '1!G;h;$p'             # method 2
 
  # reverse each character on the line (emulates "rev")
+ # balik setiap karakter pada baris sekarang (meniru "rev")
  sed '/\n/!G;s/\(.\)\(.*\n\)/&\2\1/;//D;s/.//'
 
  # join pairs of lines side-by-side (like "paste")
