@@ -43,7 +43,7 @@ SPASI BERKAS:
  # insert a blank line above and below every line which matches "regex"
  sed '/regex/{x;p;x;G;}'
 
-NUMBERING:
+PENOMORAN:
 
  # number each line of a file (simple left alignment). Using a tab (see
  # note on '\t' at end of file) instead of space will preserve margins.
@@ -56,9 +56,10 @@ NUMBERING:
  sed '/./=' filename | sed '/./N; s/\n/ /'
 
  # count lines (emulates "wc -l")
+ # hitung baris (meniru "wc -l)
  sed -n '$='
 
-TEXT CONVERSION AND SUBSTITUTION:
+KONVERSI TEKS DAN SUBSTITUSI:
 
  # IN UNIX ENVIRONMENT: convert DOS newlines (CR/LF) to Unix format.
  sed 's/.$//'               # assumes that all lines end with CR/LF
