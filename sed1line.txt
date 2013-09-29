@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------
-USEFUL ONE-LINE SCRIPTS FOR SED (Unix stream editor)        Dec. 29, 2005
+SKRIP-SKRIP BERGUNA SATU-BARIS SED (Unix Stream Editor)     Dec. 29, 2005
 Dikompilasi oleh Eric Pement - pemente[at]northpark[dot]edu     versi 5.5
 
 Versi terbaru dari berkas ini (dalam Bahasa Inggris) biasanya ada di:
