@@ -152,22 +152,22 @@ KONVERSI TEKS DAN SUBSTITUSI:
  # add commas to numbers with decimal points and minus signs (GNU sed)
  gsed -r ':a;s/(^|[^0-9.])([0-9]+)([0-9]{3})/\1\2,\3/g;ta'
 
- # add a blank line every 5 lines (after lines 5, 10, 15, 20, etc.)
- gsed '0~5G'                  # GNU sed only
- sed 'n;n;n;n;G;'             # other seds
+ # tambah baris kosong setiap lima baris (setelah baris 5, 10, 15, dst)
+ gsed '0~5G'                  # GNU sed saja
+ sed 'n;n;n;n;G;'             # sed lainnya
+ 
+PENCETAKAN SELEKTIF DARI BARIS TERTENTU:
 
-SELECTIVE PRINTING OF CERTAIN LINES:
-
- # print first 10 lines of file (emulates behavior of "head")
+ # cetak 10 baris pertama berkas (meniru perilaku "head")
  sed 10q
 
- # print first line of file (emulates "head -1")
+ # cetak baris pertama berkas (meniru "head -1")
  sed q
 
- # print the last 10 lines of a file (emulates "tail")
+ # cetak 10 baris terakhir berkas (meniru "tail")
  sed -e :a -e '$q;N;11,$D;ba'
 
- # print the last 2 lines of a file (emulates "tail -2")
+ #cetak 2 baris terkahir sebuah berkas (menitu "tail -2")
  sed '$!N;$!D'
 
  # print the last line of a file (emulates "tail -1")
