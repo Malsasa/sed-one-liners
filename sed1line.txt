@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------
 SKRIP-SKRIP BERGUNA SATU-BARIS SED (Unix Stream Editor)     Dec. 29, 2005
 Dikompilasi oleh Eric Pement - pemente[at]northpark[dot]edu     versi 5.5
+Diterjemahkan oleh Ade Malsasa Akbar - teknoloid[at]gmail[dot]com
 
 Versi terbaru dari berkas ini (dalam Bahasa Inggris) biasanya ada di:
    http://sed.sourceforge.net/sed1line.txt
@@ -37,7 +38,6 @@ SPASI BERKAS:
  # sisipkan satu baris kosong di atas setiap baris yang cocok dengan "regex"
  sed '/regex/{x;p;x;}'
 
- # insert a blank line below every line which matches "regex"
  # sisipkan sebuah baris kosong di bawah setiap baris yang cocok dengan "regex"
  sed '/regex/G'
 
@@ -56,7 +56,6 @@ PENOMORAN:
  # number each line of file, but only print numbers if line is not blank
  sed '/./=' filename | sed '/./N; s/\n/ /'
 
- # count lines (emulates "wc -l")
  # hitung baris (meniru "wc -l)
  sed -n '$='
 
@@ -247,9 +246,9 @@ PENCETAKAN SELEKTIF DARI BARIS TERTENTU:
  # print section of file between two regular expressions (inclusive)
  sed -n '/Iowa/,/Montana/p'             # case sensitive
 
-SELECTIVE DELETION OF CERTAIN LINES:
+PENGHAPUSAN SELEKTIF BARIS TERTENTU:
 
- # print all of file EXCEPT section between 2 regular expressions
+ # cetak semua berkas KECUALI bagian di antara 2 regex
  sed '/Iowa/,/Montana/d'
 
  # delete duplicate, consecutive lines from a file (emulates "uniq").
@@ -263,27 +262,28 @@ SELECTIVE DELETION OF CERTAIN LINES:
  # delete all lines except duplicate lines (emulates "uniq -d").
  sed '$!N; s/^\(.*\)\n\1$/\1/; t; D'
 
- # delete the first 10 lines of a file
+ # hapus 10 baris pertama sebuah berkas
  sed '1,10d'
 
- # delete the last line of a file
+ # hapus baris terakhir sebuah berkas
  sed '$d'
 
  # delete the last 2 lines of a file
+ # hapus 2 baris terakhir sebuah berkas
  sed 'N;$!P;$!D;$d'
 
- # delete the last 10 lines of a file
+ # hapus 10 baris terakhir dari sebuah berkas
  sed -e :a -e '$d;N;2,10ba' -e 'P;D'   # method 1
  sed -n -e :a -e '1,10!{P;N;D;};N;ba'  # method 2
 
- # delete every 8th line
+ # hapus setiap baris ke-8
  gsed '0~8d'                           # GNU sed only
  sed 'n;n;n;n;n;n;n;d;'                # other seds
 
- # delete lines matching pattern
+ # hapus baris-baris yang cocok dengan pola
  sed '/pattern/d'
 
- # delete ALL blank lines from a file (same as "grep '.' ")
+ # hapus SEMUA baris kosong dari sebuah berkas (sama dengan "grep '.' ")
  sed '/^$/d'                           # method 1
  sed '/./!d'                           # method 2
 
@@ -302,10 +302,10 @@ SELECTIVE DELETION OF CERTAIN LINES:
  sed -e :a -e '/^\n*$/{$d;N;ba' -e '}'  # works on all seds
  sed -e :a -e '/^\n*$/N;/\n$/ba'        # ditto, except for gsed 3.02.*
 
- # delete the last line of each paragraph
+ # hapus baris terakhir dari setiap paragraf
  sed -n '/^$/{p;h;};/./{x;/./p;}'
 
-SPECIAL APPLICATIONS:
+PENERAPAN ISTIMEWA:
 
  # remove nroff overstrikes (char, backspace) from man pages. The 'echo'
  # command may need an -e switch if you use Unix System V or bash shell.
