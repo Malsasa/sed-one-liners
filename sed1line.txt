@@ -33,11 +33,12 @@ SPASI BERKAS:
 
  # undo spasi-dobel (anggap baris-baris bernomor genap selalu kosong)
  sed 'n;d'
-
- # insert a blank line above every line which matches "regex"
+ 
+ # sisipkan satu baris kosong di atas setiap baris yang cocok dengan "regex"
  sed '/regex/{x;p;x;}'
 
  # insert a blank line below every line which matches "regex"
+ # sisipkan sebuah baris kosong di bawah setiap baris yang cocok dengan "regex"
  sed '/regex/G'
 
  # insert a blank line above and below every line which matches "regex"
