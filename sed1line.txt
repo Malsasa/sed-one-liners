@@ -137,18 +137,18 @@ KONVERSI TEKS DAN SUBSTITUSI:
  # join pairs of lines side-by-side (like "paste")
  sed '$!N;s/\n/ /'
 
- # jika sebuah baris berakhiran backslash, gabungkan baris selanjutnya
+ # jika sebuah baris berakhiran backslash, bubuhkan baris selanjutnya
  sed -e :a -e '/\\$/N; s/\\\n//; ta'
 
- # if a line begins with an equal sign, append it to the previous line
- # and replace the "=" with a single space
+ # jika sebuah baris diawali tanda sama dengan, bubuhkan kepada baris
+ # sebelumnya dan ganti "=" dengan satu spasi
  sed -e :a -e '$!N;s/\n=/ /;ta' -e 'P;D'
 
- # add commas to numeric strings, changing "1234567" to "1,234,567"
+ # tambahkan koma ke string numerik, mengubah "1234567" jadi "1,234,567"
  gsed ':a;s/\B[0-9]\{3\}\>/,&/;ta'                     # GNU sed
  sed -e :a -e 's/\(.*[0-9]\)\([0-9]\{3\}\)/\1,\2/;ta'  # other seds
 
- # add commas to numbers with decimal points and minus signs (GNU sed)
+ # tambahkan koma ke nomor dengan titik desimal dan tanda minus (GNU sed)
  gsed -r ':a;s/(^|[^0-9.])([0-9]+)([0-9]{3})/\1\2,\3/g;ta'
 
  # tambah baris kosong setiap lima baris (setelah baris 5, 10, 15, dst)
@@ -178,11 +178,11 @@ PENCETAKAN SELEKTIF DARI BARIS TERTENTU:
  sed -e '1{$q;}' -e '$!{h;d;}' -e x  # for 1-line files, print the line
  sed -e '1{$d;}' -e '$!{h;d;}' -e x  # for 1-line files, print nothing
 
- # print only lines which match regular expression (emulates "grep")
+ # cetak hanya baris yang sesuai regex (meniru "grep")
  sed -n '/regexp/p'           # method 1
  sed '/regexp/!d'             # method 2
 
- # print only lines which do NOT match regexp (emulates "grep -v")
+ # cetak hanya baris yang TIDAK sesuai regex (meniru "grep -v")
  sed -n '/regexp/!p'          # method 1, corresponds to above
  sed '/regexp/d'              # method 2, simpler syntax
 
