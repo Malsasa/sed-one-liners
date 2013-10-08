@@ -31,5 +31,6 @@ Terjemahan Dokumentasi Sed 1 Line
 
 2. Menyibukkan diri. 
 3. Mempelajari sed karena sangat berguna untuk mengurusi teks guna keperluan server dan segalanya.
+4. Menggunakan proyek ini sebagai bahan untuk _posting_ di blog saya.
 
 
