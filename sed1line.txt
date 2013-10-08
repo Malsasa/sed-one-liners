@@ -134,7 +134,7 @@ KONVERSI TEKS DAN SUBSTITUSI:
  # balik setiap karakter pada baris sekarang (meniru "rev")
  sed '/\n/!G;s/\(.\)\(.*\n\)/&\2\1/;//D;s/.//'
 
- __# join pairs of lines side-by-side (like "paste")__
+ # gabung baris-baris berpasangan dua-dua (seperti "paste")
  sed '$!N;s/\n/ /'
 
  # jika sebuah baris berakhiran backslash, bubuhkan baris selanjutnya
