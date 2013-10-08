@@ -186,12 +186,10 @@ PENCETAKAN SELEKTIF DARI BARIS TERTENTU:
  sed -n '/regexp/!p'          # method 1, corresponds to above
  sed '/regexp/d'              # method 2, simpler syntax
 
- # print the line immediately before a regexp, but not the line
- # containing the regexp
+ # cetak baris tepat sebelum regex, tetapi bukan yang berisi regex
  sed -n '/regexp/{g;1!p;};h'
 
- # print the line immediately after a regexp, but not the line
- # containing the regexp
+ # cetak baris tepat setelah regex, tetapi bukan yang berisi regex
  sed -n '/regexp/{n;p;}'
 
  # print 1 line of context before and after regexp, with line number
@@ -222,14 +220,15 @@ PENCETAKAN SELEKTIF DARI BARIS TERTENTU:
  # print only lines of 65 characters or longer
  sed -n '/^.\{65\}/p'
 
- # print only lines of less than 65 characters
+ # cetak hanya baris yang berisi kurang dari 65 karakter
  sed -n '/^.\{65\}/!p'        # method 1, corresponds to above
  sed '/^.\{65\}/d'            # method 2, simpler syntax
 
- # print section of file from regular expression to end of file
+ # cetak bagian berkas dari regex hingga akhir berkas
  sed -n '/regexp/,$p'
 
  # print section of file based on line numbers (lines 8-12, inclusive)
+ # cetak bagian berkas berdasarkan nomor baris (baris 8-12, inklusif)
  sed -n '8,12p'               # method 1
  sed '8,12!d'                 # method 2
 
