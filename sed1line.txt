@@ -227,17 +227,16 @@ PENCETAKAN SELEKTIF DARI BARIS TERTENTU:
  # cetak bagian berkas dari regex hingga akhir berkas
  sed -n '/regexp/,$p'
 
- # print section of file based on line numbers (lines 8-12, inclusive)
  # cetak bagian berkas berdasarkan nomor baris (baris 8-12, inklusif)
  sed -n '8,12p'               # method 1
  sed '8,12!d'                 # method 2
 
- # print line number 52
+ # cetak baris nomor 52
  sed -n '52p'                 # method 1
  sed '52!d'                   # method 2
  sed '52q;d'                  # method 3, efficient on large files
 
- # beginning at line 3, print every 7th line
+ # mulai dari baris tiga, cetak setiap baris ke-7
  gsed -n '3~7p'               # GNU sed only
  sed -n '3,${p;n;n;n;n;n;n;}' # other seds
 
