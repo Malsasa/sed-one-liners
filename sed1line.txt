@@ -95,10 +95,10 @@ KONVERSI TEKS DAN SUBSTITUSI:
  # delete BOTH leading and trailing whitespace from each line
  sed 's/^[ \t]*//;s/[ \t]*$//'
 
- # insert 5 blank spaces at beginning of each line (make page offset)
+ # sisipkan 5 spasi kosong pada awal setiap baris (membuat page offset)
  sed 's/^/     /'
 
- # align all text flush right on a 79-column width
+ # ratakan semua teks ke kanan dengan lebar 79 kolom
  sed -e :a -e 's/^.\{1,78\}$/ &/;ta'  # set at 78 plus 1 space
 
  # center all text in the middle of 79-column width. In method 1,
@@ -116,13 +116,13 @@ KONVERSI TEKS DAN SUBSTITUSI:
  sed 's/\(.*\)foo\(.*foo\)/\1bar\2/' # replace the next-to-last case
  sed 's/\(.*\)foo/\1bar/'            # replace only the last case
 
- # substitute "foo" with "bar" ONLY for lines which contain "baz"
+ # substitusi "foo" dengan "bar" HANYA untuk baris yang berisi "baz"
  sed '/baz/s/foo/bar/g'
 
  # substitusi "foo" dengan "bar" KECUALI untuk baris yang berisi "baz"
  sed '/baz/!s/foo/bar/g'
 
- # change "scarlet" or "ruby" or "puce" to "red"
+ # ubah "scarlet" atau "ruby" atau "puce" menjadi "red"
  sed 's/scarlet/red/g;s/ruby/red/g;s/puce/red/g'   # most seds
  gsed 's/scarlet\|ruby\|puce/red/g'                # GNU sed only
 
@@ -131,14 +131,13 @@ KONVERSI TEKS DAN SUBSTITUSI:
  sed '1!G;h;$!d'               # method 1
  sed -n '1!G;h;$p'             # method 2
 
- # reverse each character on the line (emulates "rev")
  # balik setiap karakter pada baris sekarang (meniru "rev")
  sed '/\n/!G;s/\(.\)\(.*\n\)/&\2\1/;//D;s/.//'
 
  # join pairs of lines side-by-side (like "paste")
  sed '$!N;s/\n/ /'
 
- # if a line ends with a backslash, append the next line to it
+ # jika sebuah baris berakhiran backslash, gabungkan baris selanjutnya
  sed -e :a -e '/\\$/N; s/\\\n//; ta'
 
  # if a line begins with an equal sign, append it to the previous line
@@ -170,7 +169,7 @@ PENCETAKAN SELEKTIF DARI BARIS TERTENTU:
  #cetak 2 baris terkahir sebuah berkas (menitu "tail -2")
  sed '$!N;$!D'
 
- # print the last line of a file (emulates "tail -1")
+ # cetak baris terakhir sebuah berkas (meniru "tail -1")
  sed '$!d'                    # method 1
  sed -n '$p'                  # method 2
 
