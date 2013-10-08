@@ -85,8 +85,8 @@ KONVERSI TEKS DAN SUBSTITUSI:
  sed "s/\r//" infile >outfile         # UnxUtils sed v4.0.7 or higher
  tr -d \r <infile >outfile            # GNU tr version 1.22 or higher
 
- # delete leading whitespace (spaces, tabs) from front of each line
- # aligns all text flush left
+ # hapus spasi atau tab awal di depan setiap baris
+ # dengan kata lain, ratakan kiri seluruh teks
  sed 's/^[ \t]*//'                    # see note on '\t' at end of file
 
  # delete trailing whitespace (spaces, tabs) from end of each line
@@ -134,7 +134,7 @@ KONVERSI TEKS DAN SUBSTITUSI:
  # balik setiap karakter pada baris sekarang (meniru "rev")
  sed '/\n/!G;s/\(.\)\(.*\n\)/&\2\1/;//D;s/.//'
 
- # join pairs of lines side-by-side (like "paste")
+ __# join pairs of lines side-by-side (like "paste")__
  sed '$!N;s/\n/ /'
 
  # jika sebuah baris berakhiran backslash, bubuhkan baris selanjutnya
@@ -166,14 +166,14 @@ PENCETAKAN SELEKTIF DARI BARIS TERTENTU:
  # cetak 10 baris terakhir berkas (meniru "tail")
  sed -e :a -e '$q;N;11,$D;ba'
 
- #cetak 2 baris terkahir sebuah berkas (menitu "tail -2")
+ # cetak 2 baris terkahir sebuah berkas (menitu "tail -2")
  sed '$!N;$!D'
 
  # cetak baris terakhir sebuah berkas (meniru "tail -1")
  sed '$!d'                    # method 1
  sed -n '$p'                  # method 2
 
- # print the next-to-the-last line of a file
+ __# print the next-to-the-last line of a file__
  sed -e '$!{h;d;}' -e x              # for 1-line files, print blank line
  sed -e '1{$q;}' -e '$!{h;d;}' -e x  # for 1-line files, print the line
  sed -e '1{$d;}' -e '$!{h;d;}' -e x  # for 1-line files, print nothing
