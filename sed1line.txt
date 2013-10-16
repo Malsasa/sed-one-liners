@@ -241,6 +241,7 @@ PENCETAKAN SELEKTIF DARI BARIS TERTENTU:
  sed -n '3,${p;n;n;n;n;n;n;}' # other seds
 
  # print section of file between two regular expressions (inclusive)
+ # cetak bagian berkas antara dua regex (inklusif)
  sed -n '/Iowa/,/Montana/p'             # case sensitive
 
 PENGHAPUSAN SELEKTIF BARIS TERTENTU:
@@ -248,15 +249,15 @@ PENGHAPUSAN SELEKTIF BARIS TERTENTU:
  # cetak semua berkas KECUALI bagian di antara 2 regex
  sed '/Iowa/,/Montana/d'
 
- # delete duplicate, consecutive lines from a file (emulates "uniq").
- # First line in a set of duplicate lines is kept, rest are deleted.
+ # hapus duplikat, baris berderet dari sebuah berkas (meniru "uniq")
+ # Baris pertama dalam sebuah set duplikat dibiarkan, sisanya dihapus
  sed '$!N; /^\(.*\)\n\1$/!P; D'
 
  # delete duplicate, nonconsecutive lines from a file. Beware not to
  # overflow the buffer size of the hold space, or else use GNU sed.
  sed -n 'G; s/\n/&&/; /^\([ -~]*\n\).*\n\1/d; s/\n//; h; P'
 
- # delete all lines except duplicate lines (emulates "uniq -d").
+ # hapus semua baris kecuali baris-baris duplikat (meniru "uniq")
  sed '$!N; s/^\(.*\)\n\1$/\1/; t; D'
 
  # hapus 10 baris pertama sebuah berkas
@@ -265,7 +266,6 @@ PENGHAPUSAN SELEKTIF BARIS TERTENTU:
  # hapus baris terakhir sebuah berkas
  sed '$d'
 
- # delete the last 2 lines of a file
  # hapus 2 baris terakhir sebuah berkas
  sed 'N;$!P;$!D;$d'
 
