@@ -166,14 +166,14 @@ PENCETAKAN SELEKTIF DARI BARIS TERTENTU:
  # cetak 10 baris terakhir berkas (meniru "tail")
  sed -e :a -e '$q;N;11,$D;ba'
 
- # cetak 2 baris terkahir sebuah berkas (menitu "tail -2")
+ # cetak 2 baris terkahir sebuah berkas (meniru "tail -2")
  sed '$!N;$!D'
 
  # cetak baris terakhir sebuah berkas (meniru "tail -1")
  sed '$!d'                    # method 1
  sed -n '$p'                  # method 2
 
- __# print the next-to-the-last line of a file__
+ __# cetak baris tepat di bawah sampai ke akhir berkas__
  sed -e '$!{h;d;}' -e x              # for 1-line files, print blank line
  sed -e '1{$q;}' -e '$!{h;d;}' -e x  # for 1-line files, print the line
  sed -e '1{$d;}' -e '$!{h;d;}' -e x  # for 1-line files, print nothing
@@ -192,17 +192,17 @@ PENCETAKAN SELEKTIF DARI BARIS TERTENTU:
  # cetak baris tepat setelah regex, tetapi bukan yang berisi regex
  sed -n '/regexp/{n;p;}'
 
- # print 1 line of context before and after regexp, with line number
- # indicating where the regexp occurred (similar to "grep -A1 -B1")
+ # cetak 1 baris dari konteks sebelum dan sesudah regex, dengan nomor baris
+ # menunjukkan di mana regex terjadi (seperti "gre[p -A1 -B1")
  sed -n -e '/regexp/{=;x;1!p;g;$!N;p;D;}' -e h
 
- # grep for AAA and BBB and CCC (in any order)
+ # grep untuk AAA dan BBB dan CCC (urutan terserah)
  sed '/AAA/!d; /BBB/!d; /CCC/!d'
 
- # grep for AAA and BBB and CCC (in that order)
+ # grep untuk AAA dan BBB dan CCC (sesuai urutan)
  sed '/AAA.*BBB.*CCC/!d'
 
- # grep for AAA or BBB or CCC (emulates "egrep")
+ # grep untuk AAA atau BBB atau CCC (meniru "egrep")
  sed -e '/AAA/b' -e '/BBB/b' -e '/CCC/b' -e d    # most seds
  gsed '/AAA\|BBB\|CCC/!d'                        # GNU sed only
 
